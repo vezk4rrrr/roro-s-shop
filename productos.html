@@ -142,6 +142,7 @@
 
     <script>
 const productos = [
+
     // Peke Pakes (Consumibles)
     { nombre: "Emperador De Chocolate 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/emperador_chocolate.jpg" },
     { nombre: "Emperador De Vainilla 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/emperador_vainilla.jpg" },
@@ -150,26 +151,26 @@ const productos = [
     { nombre: "Mamuts 12g", categorias: ["Peke Pakes", , "Selección completa"], precio: 5.00, imagen: "img/mamuts.jpg" },
 
     // Santa Clara (Bebidas, Consumibles)
-    { nombre: "Santa Clara Vainilla 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_Vainilla.jpg" },
-    { nombre: "Santa Clara Fresa 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/Santa_clara_Fresa.jpg" },
-    { nombre: "Santa Clara Capuccino 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/Santa_clara_Capuccino.jpg" },
-    { nombre: "Santa Clara Chocolate 200ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/Santa_clara_Chocolate.jpg" },
-    { nombre: "Santa Clara Galleta 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/Santa_clara_Galleta.jpg" },
-    { nombre: "Santa Clara Fantasía 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/Santa_clara_Fantasía.jpg" },
+    { nombre: "Santa Clara Vainilla 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_vainilla.jpg" },
+    { nombre: "Santa Clara Fresa 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_fresa.jpg" },
+    { nombre: "Santa Clara Capuccino 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_capuccino.jpg" },
+    { nombre: "Santa Clara Chocolate 200ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_chocolate.jpg" },
+    { nombre: "Santa Clara Galleta 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_galleta.jpg" },
+    { nombre: "Santa Clara Fantasía 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/Santa_Clara_Fantasia.jpg" },
 
     // Jugos Del Valle (Bebidas, Consumibles)
     { nombre: "Jugo De Mango 200ml", categorias: ["Bebidas", "Selección completa"], precio: 12.00, imagen: "img/jugo_mango.jpg" },
-    { nombre: "Jugo De Manzana 200ml", categorias: ["Bebidas", "Selección completa"], precio: 12.00, imagen: "img/jugo_de_manzana.jpg" },
+    { nombre: "Jugo De Manzana 200ml", categorias: ["Bebidas", "Selección completa"], precio: 12.00, imagen: "img/Jugo_De_Manzana.jpg" },
     { nombre: "Jugo De Durazno 200ml", categorias: ["Bebidas", "Selección completa"], precio: 12.00, imagen: "img/jugo_durazno.jpg" },
 
     // Agua Natural
-    { nombre: "Agua Natural Member’s Mark 296ml", categorias: ["Bebidas", "Selección completa"], precio: 5.00, imagen: "img/water.webp" },
+    { nombre: "Agua Natural Member’s Mark 296ml", categorias: ["Bebidas", "Selección completa"], precio: 5.00, imagen: "img/water.jpg" },
 
     // Picantes
     { nombre: "Gomangos 8g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 3.00, imagen: "img/gomango.jpg" },
-    { nombre: "Lucas Gusano De Tamarindo 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/lucas_gusano_de_tamarindo.png" },
-    { nombre: "Lucas Gusano De Chamoy 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/lucas_gusano_de_chamoy.jpg" },
-    { nombre: "Lucas Gusano Acidito 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/lucas_gusano_acidito.jpg" },
+    { nombre: "Lucas Gusano De Tamarindo 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/Lucas_Gusano_De_Tamarindo.jpg" },
+    { nombre: "Lucas Gusano De Chamoy 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/Lucas_Gusano_De_Chamoy.jpg" },
+    { nombre: "Lucas Gusano Acidito 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/Lucas_Gusano_Acidito.jpg" },
 
     // Frituras
     { nombre: "Sabritas 18g", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/sabritas_original.jpg" },
@@ -177,34 +178,33 @@ const productos = [
     { nombre: "Ruffles Con Queso 20g", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/ruffles_queso.jpg" },
     { nombre: "Cheetos Torciditos 18g", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/torciditos.jpg" },
     { nombre: "Cheetos Xtra Flamin’ Hot", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/flaming_hot.jpg" },
-    { nombre: "Fritos De Maíz", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/fritos_de_maíz.jpg" },
-    { nombre: "Doritos Nacho 23g", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/doritos_nacho_23g.webp" },
-    { nombre: "Doritos Cool Ranch", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/doritos_cool_ranch.webp" },
+    { nombre: "Fritos De Maíz", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/Fritos_De_Maíz.jpg" },
+    { nombre: "Doritos Nacho 23g", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/Doritos_Nacho_23g.jpg" },
+    { nombre: "Doritos Cool Ranch", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/Doritos_Cool_Ranch.jpg" },
     { nombre: "Churrumais 18g", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/churrumais.jpg" },
     { nombre: "Rancheritos", categorias: ["Frituras", "Selección completa"], precio: 17.00, imagen: "img/rancheritos.jpg" },
 
     // Chocolates (también son Dulces y Consumibles)
-    { nombre: "Snicker 48g", categorias: [".", "Dulces", "Selección completa"], precio: 17.00, imagen: "img/snickers.jpg" },
+    { nombre: "Snicker 48g", categorias: [".", "Dulces", "Selección completa"], precio: 17.00, imagen: "img/Snickers.jpg" },
     { nombre: "Milkyways 48g", categorias: [".", "Dulces", "Selección completa"], precio: 17.00, imagen: "img/milkyway.jpg" },
-    { nombre: "Mini Twix", categorias: [".", "Dulces", "Selección completa"], precio: 5.00, imagen: "img/mini_twix.jpg" },
-    { nombre: "M&M De Chocolate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/m&m_de_chocolate.jpg" },
-    { nombre: "M&M De Cacahuate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/m&m_de_cacahuate.jpg" },
+    { nombre: "Mini Twix", categorias: [".", "Dulces", "Selección completa"], precio: 5.00, imagen: "img/Mini_Twix.jpg" },
+    { nombre: "M&M De Chocolate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Chocolate.jpg" },
+    { nombre: "M&M De Cacahuate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Cacahuate.jpg" },
     { nombre: "M&M De Mantequilla De Cacahuate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/m&m_peanut_butter.jpg" },
-    { nombre: "M&M De Galleta 38.3g", categorias: [".", "Dulces", "Selección completa"], precio: 15.00, imagen: "img/m&m_de_galleta.webp" },
-    { nombre: "Reese’s 8.66g", categorias: [".", "Dulces", "Selección completa"], precio: 3.33, imagen: "img/reese’s.jpg" },
+    { nombre: "M&M De Galleta 38.3g", categorias: [".", "Dulces", "Selección completa"], precio: 15.00, imagen: "img/M&M_De_Galleta.jpg" },
+    { nombre: "Reese’s 8.66g", categorias: [".", "Dulces", "Selección completa"], precio: 3.33, imagen: "img/Reese’s.jpg" },
     { nombre: "Gansitos 50g", categorias: [".", "Dulces", "Selección completa"], precio: 17.00, imagen: "img/gansito.jpg" },
     { nombre: "Duvalín 10g", categorias: [".", "Dulces", "Selección completa"], precio: 3.00, imagen: "img/duvalin.jpg" },
     { nombre: "Pandita 15g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/panditas.jpg" },
-    { nombre: "Snickers Fun Size", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/snicker_mini.jpg" },
-    { nombre: "Milkyways Fun Size", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/milky_way_mini.jpg" },
+    { nombre: "Snickers Fun Size", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/Snickers_Fun_Size.jpg" },
+    { nombre: "Milkyways Fun Size", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/Milkyways_Fun_Size.jpg" },
     { nombre: "Kinder delice", categorias: [".", "Dulces", "Selección completa"], precio: 20.00, imagen: "img/delice.jpg" },
-
 
     // premium (mamadas que se me ocurrieron)
     { nombre: "Whatsapp doritos 240g", categorias: ["premium"], precio: 999999.999, imagen: "img/whatsapp.jpg" },
-    { nombre: "Un abrazo de rodrigo", categorias: ["premium"], precio: 10.07, imagen: "img/rodrigo_mimido.jpg" },
-];                
-        
+    { nombre: "Un abrazo de rodrigo", categorias: ["premium"], precio: 10.07, imagen: "img/roro's_shop.jpg" },
+
+];
 
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

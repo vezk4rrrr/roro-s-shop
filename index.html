@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --color-primary: #ffb86c;
+      --color-secondary: #ffd700;
+      --color-background: #fffcdc;
+      --color-text: #333;
+      --shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--color-background);
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: 100px;
+    }
+
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    header.main-header {
+      animation: slideDown 0.8s ease-out;
+      background-color: #fdfcf5;
+      color: #000000;
+      padding: 15px 30px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-header-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo {
+      max-height: 80px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05) rotate(-2deg);
+    }
+
+    .titulo-derecha {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 700;
+      font-size: 1.2em;
+      white-space: nowrap;
+      color: #333;
+      opacity: 0;
+      animation: fadeInRight 1s ease-out 0.5s forwards;
+      font-family: Allura, cursive;
+    }
+
+    @keyframes fadeInRight {
+      from {
+        transform: translate(30px, -50%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-50%);
+        opacity: 1;
+      }
+    }
+
+    .tenor-container {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 60px;
+      height: 60px;
+      z-index: 200;
+    }
+
+    .menu {
+      background-color: var(--color-primary);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 15px;
+      text-align: center;
+      width: 150px;
+      margin-top: 10px;
+      margin-left: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .menu h1 {
+      color: #eff7ff;
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .menu a {
+      display: block;
+      padding: 10px 0;
+      text-decoration: none;
+      color: #eff7ff;
+      font-size: 0.9em;
+      font-weight: 600;
+      border-bottom: 1px solid #ecf0f1;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu a:last-child {
+      border-bottom: none;
+    }
+
+    .menu a:hover {
+      color: var(--color-secondary);
+      transform: scale(1.05);
+    }
+
+    .categorias-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 80px;
+      width: 80%;
+      max-width: 960px;
+    }
+
+    .categoria {
+      width: calc(50% - 20px);
+      background-color: #fdfcf5;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin: 10px;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--color-text);
+      transform: scale(0.95);
+      opacity: 0;
+      transition: transform 0.4s ease-in-out, box-shadow 0.3s;
+    }
+
+    .categoria.aparecer {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .categoria:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .categoria img {
+      max-width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .categoria:hover img {
+      transform: scale(1.15);
+    }
+
+    .categoria h2 {
+      margin: 0;
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 600px) {
+      .categoria {
+        width: 100%;
+      }
+    }
+
+    .opiniones, .estadisticas {
+      background: linear-gradient(135deg, #fff8f0, #ffe0c3);
+      padding: 30px;
+      margin-top: 60px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      width: 90%;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .opiniones h2, .estadisticas h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .opiniones textarea {
+      width: 90%;
+      height: 120px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 2px solid #ccc;
+      font-size: 1em;
+      resize: none;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .opiniones select {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 1em;
+      border: 1px solid #aaa;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .opiniones button {
+      margin-top: 15px;
+      background-color: #ff914d;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .opiniones button:hover {
+      background-color: #ff6a00;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="main-header-inner">
+      <a href="index.html">
+        <img src="img/roro's shop.png" alt="Logo Roro's Shop" class="logo">
+      </a>
+      <div class="tenor-container">
+        <div class="tenor-gif-embed" data-postid="26159537" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+          <a href="https://tenor.com/view/kodok-acumalaka-gif-26159537">Kodok Acumalaka GIF</a>
+        </div>
+      </div>
+      <div class="titulo-derecha">
+        <span>Roro's</span><br>
+        <span>Shop</span><br>
+        <span>Menu</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu" aria-label="Menú principal">
+    <h1>Settings</h1>
+    <a href="index.html">Inicio</a>
+    <a href="login/login.html">Iniciar Sesión (coming soon)</a>
+    <a href="carrito.html">Carrito
+    (coming soon)</a>
+  </nav>
+
+  <main class="categorias-container">
+    <a href="productos.html?categoria=Bebidas" class="categoria" aria-label="Ver categoría Bebidas">
+      <img loading="lazy" src="img/Santa clara Chocolate.jpg" alt="Bebidas Santa Clara Chocolate" />
+      <h2>Bebidas</h2>
+    </a>
+    <a href="productos.html?categoria=Frituras" class="categoria" aria-label="Ver categoría Frituras">
+      <img loading="lazy" src="img/original ruffles.jpg" alt="Frituras Ruffles" />
+      <h2>Frituras</h2>
+    </a>
+    <a href="productos.html?categoria=Dulces" class="categoria" aria-label="Ver categoría Dulces">
+      <img loading="lazy" src="img/milkyway.jpg" alt="Dulce Milkyway" />
+      <h2>Dulces</h2>
+    </a>
+    <a href="productos.html?categoria=Selección completa" class="categoria" aria-label="Ver categoría Selección completa">
+      <img loading="lazy" src="img/roro's shop.png" alt="Roro's Shop" />
+      <h2>Selección completa</h2>
+    </a>
+    <a href="productos.html?categoria=picante" class="categoria" aria-label="Ver categoría Picante">
+      <img loading="lazy" src="img/gomango.jpg" alt="Dulces Picantes GoMango" />
+      <h2>Picante</h2>
+      </a>
+    <a href="productos.html?categoria=Peke Pakes" class="categoria" aria-label="Ver categoría Peke Pakes">
+      <img loading="lazy" src="img/emperador chocolate.jpg" alt="Galletas Emperador Chocolate" />
+      <h2>Peke Pakes</h2>
+    </a>
+    <a href="productos.html?categoria=premium" class="categoria" aria-label="Ver categoría Premium">
+      <img loading="lazy" src="img/premium.png" alt="Productos Premium" />
+      <h2>Premium</h2>
+    </a>
+  </main>
+
+  <!-- Script de Tenor para el GIF -->
+  <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+  <script>
+    // Animación al hacer scroll
+    const categorias = document.querySelectorAll('.categoria');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aparecer');
+        } else {
+          entry.target.classList.remove('aparecer');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    categorias.forEach(categoria => observer.observe(categoria));
+  </script>
+
+  <div class="opiniones">
+    <h2>¿Qué te gustaría ver en el menú?</h2>
+    <textarea id="mensaje" placeholder="Escribe aquí tu sugerencia..."></textarea>
+    <br>
+    <label for="experiencia">¿Cómo fue tu experiencia?</label>
+    <select id="experiencia">
+      <option value="positiva">Buena</option>
+      <option value="negativa">Mala</option>
+    </select>
+    <br>
+    <button id="enviar-opinion">Enviar opinión</button>
+  </div>
+
+  <div class="estadisticas" id="panel-estadisticas" style="display: none;">
+    <h2>Estadísticas de Opiniones</h2>
+    <p>Opiniones positivas: <span id="positivas">0</span></p>
+    <p>Opiniones negativas: <span id="negativas">0</span></p>
+  </div>
+
+  <script>
+    document.getElementById('enviar-opinion').addEventListener('click', function() {
+      const mensaje = document.getElementById('mensaje').value.trim();
+      const experiencia = document.getElementById('experiencia').value;
+
+      if (mensaje === "") {
+        alert("Por favor, escribe una sugerencia.");
+        return;
+      }
+
+      const datos = {
+        mensaje: mensaje,
+        experiencia: experiencia
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbw3azhCcpOmx4d5lzny3undje9zpzyEC8qQj0f8ICuqI5-OgBcMry4Q9WhJgGr8eoR0/exec", {
+        method: "POST",
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      })
+      .then(() => {
+        alert("¡Gracias por tu opinión!");
+        document.getElementById('mensaje').value = "";
+        document.getElementById('experiencia').value = "";   
+         })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("Hubo un error al enviar.");
+      });
+    });
+  </script>
+</body>
+</html>

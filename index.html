@@ -29,7 +29,7 @@
       min-height: 100vh;
       margin: 0;
       padding-top: 100px;
-      position: relative; /* Asegura que el contenedor principal sea relativo */
+      position: relative;
     }
 
     @keyframes slideDown {
@@ -226,6 +226,7 @@
       background: linear-gradient(135deg, #fff8f0, #ffe0c3);
       padding: 30px;
       margin-top: 60px;
+      margin-bottom: 80px;
       border-radius: 20px;
       text-align: center;
       box-shadow: var(--shadow);
@@ -233,6 +234,8 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      position: relative;
+      z-index: 2;
     }
 
     .opiniones h2, .estadisticas h2 {
@@ -278,26 +281,27 @@
       background-color: #ff6a00;
     }
 
-.creditos-inferior-derecha {
-  font-size: 0.8em;
-  color: #333;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 8px 12px;
-  border-radius: 20px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-}
+    .creditos-inferior-derecha {
+      font-size: 0.8em;
+      color: #333;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 8px 12px;
+      border-radius: 20px;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      z-index: 1;
+    }
 
-.creditos-inferior-derecha:hover {
-  background-color: rgba(255, 255, 255, 1);
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+    .creditos-inferior-derecha:hover {
+      background-color: rgba(255, 255, 255, 1);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
   </style>
 </head>
 <body>

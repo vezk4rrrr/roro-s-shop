@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Menú</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -29,6 +29,7 @@
       min-height: 100vh;
       margin: 0;
       padding-top: 100px;
+      position: relative; /* Asegura que el contenedor principal sea relativo */
     }
 
     @keyframes slideDown {
@@ -276,6 +277,27 @@
     .opiniones button:hover {
       background-color: #ff6a00;
     }
+
+.creditos-inferior-derecha {
+  font-size: 0.8em;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 8px 12px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.creditos-inferior-derecha:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
   </style>
 </head>
 <body>
@@ -283,18 +305,18 @@
 <header class="main-header">
     <div class="main-header-inner">
         <div class="tenor-container">
-            <div class="tenor-gif-embed" data-postid="26159537" data-share-method="host" data-aspect-ratio="1" data-width="80px">
+            <div class="tenor-gif-embed" data-postid="26159537" data-share-method="host" data-aspect-ratio="1" data-width="80px" title="GIF de Kodok Acumalaka">
                 <a href="https://tenor.com/view/kodok-acumalaka-gif-26159537">Kodok Acumalaka GIF</a>
             </div>
             <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
         </div>
         <a href="index.html">
-            <img src="img/roro's_shop.png" alt="Logo Roro's Shop" class="logo">
+            <img src="img/roro's_shop.png" alt="Logo Roro's Shop" class="logo" loading="lazy">
         </a>
         <div class="titulo-derecha">
-            <span>Roro's</span><br>
-            <span>Shop</span><br>
-            <span>Menu</span>
+            <span role="heading" aria-level="1">Roro's</span><br>
+            <span role="heading" aria-level="2">Shop</span><br>
+            <span role="heading" aria-level="3">Menu</span>
         </div>
     </div>
 </header>
@@ -306,7 +328,7 @@
     <a href="carrito.html">Carrito (coming soon)</a>
 </nav>
 
-<main class="categorias-container">
+<main class="categorias-container" role="main">
     <a href="productos.html?categoria=Bebidas" class="categoria" aria-label="Ver categoría Bebidas">
         <img loading="lazy" src="img/santa_clara_fresa.jpg" alt="Santa Clara Fresa" />
         <h2>Bebidas</h2>
@@ -355,6 +377,10 @@
     categorias.forEach(categoria => observer.observe(categoria));
   </script>
 
+ <div class="creditos-inferior-derecha">
+    Créditos: Marco de 4to A
+  </div>
+
   <div class="opiniones">
     <h2>¿Qué te gustaría ver en el menú?</h2>
     <textarea id="mensaje" placeholder="Escribe aquí tu sugerencia..."></textarea>
@@ -365,7 +391,7 @@
       <option value="negativa">Mala</option>
     </select>
     <br>
-    <button id="enviar-opinion">Enviar opinión</button>
+    <button id="enviar-opinion" aria-label="Enviar opinión">Enviar opinión</button>
   </div>
 
   <div class="estadisticas" id="panel-estadisticas" style="display: none;">
@@ -400,7 +426,7 @@
       .then(() => {
         alert("¡Gracias por tu opinión!");
         document.getElementById('mensaje').value = "";
-        document.getElementById('experiencia').value = "";   
+        document.getElementById('experiencia').value = "";
          })
       .catch(error => {
         console.error('Error:', error);

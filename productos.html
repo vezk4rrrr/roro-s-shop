@@ -38,17 +38,10 @@
             min-height: 80px;
         }
 
-        .main-header-inner {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
         .logo {
             max-height: 80px;
             position: absolute;
-            left: 49.8%;
+            left: 48.8%;
             top: 20%;
             transform: translateX(-50%);
             transition: transform 0.3s ease-in-out;
@@ -58,17 +51,19 @@
             transform: translateX(-50%) scale(1.1);
         }
 
-        .titulo-derecha {
-            position: absolute;
-            right: 50px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-weight: 700;
-            font-size: 1.2em;
-            white-space: nowrap;
-            color: #333;
-            font-family: 'Allura', cursive;
-        }
+    .titulo-derecha {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 700;
+      font-size: 1.2em;
+      white-space: nowrap;
+      color: #333;
+      opacity: 0;
+      animation: fadeInRight 1s ease-out 0.5s forwards;
+      font-family: Allura, cursive;
+    }
 
         /* ---------- Grid de productos ---------- */
         .productos-grid {
@@ -130,17 +125,28 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 <body>
 <div class="main-header">
   <div class="main-header-inner">
     <a href="index.html"> <img src="img/roro's_shop.png" alt="Roro's shop" class="logo"></a>
-    <div class="titulo-derecha">
-      <span>Roro's</span><br>
-      <span>Shop</span><br>
-      <span>Menu</span>
-    </div>
+<div class="titulo-derecha">
+  <span>Roro's</span><br>
+  <span>Shop</span><br>
+  <span>Menu</span>
+</div>
   </div>
 </div>
     <div class="productos-grid" id="productos-lista"></div>
@@ -151,9 +157,9 @@ const productos = [
     // Peke Pakes (Consumibles)
     { nombre: "Emperador De Chocolate 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/emperador_chocolate.jpg" },
     { nombre: "Emperador De Vainilla 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/emperador_vainilla.jpg" },
-    { nombre: "Chokis 36g", categorias: ["Peke Pakes", , "Selección completa"], precio: 12.00, imagen: "img/chokis_clasicas.jpg" },
-    { nombre: "Arcoíris 36g", categorias: ["Peke Pakes", , "Selección completa"], precio: 12.00, imagen: "img/arcoiris.jpg" },
-    { nombre: "Mamuts 12g", categorias: ["Peke Pakes", , "Selección completa"], precio: 5.00, imagen: "img/mamuts.jpg" },
+    { nombre: "Chokis 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/chokis_clasicas.jpg" },
+    { nombre: "Arcoíris 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/arcoiris.jpg" },
+    { nombre: "Mamuts 12g", categorias: ["Peke Pakes", "Selección completa"], precio: 5.00, imagen: "img/mamuts.jpg" },
 
     // Santa Clara (Bebidas, Consumibles)
     { nombre: "Santa Clara Vainilla 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_vainilla.jpg" },
@@ -190,20 +196,20 @@ const productos = [
     { nombre: "Rancheritos", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/rancheritos.jpg" },
 
     // Chocolates (también son Dulces y Consumibles)
-    { nombre: "Snicker 48g", categorias: [".", "Dulces", "Selección completa"], precio: 17.00, imagen: "img/Snickers.jpg" },
-    { nombre: "Milkyways 48g", categorias: [".", "Dulces", "Selección completa"], precio: 20.00, imagen: "img/milkyway.jpg" },
-    { nombre: "Mini Twix", categorias: [".", "Dulces", "Selección completa"], precio: 5.00, imagen: "img/Mini_Twix.jpg" },
-    { nombre: "M&M De Chocolate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Chocolate.jpg" },
-    { nombre: "M&M De Cacahuate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Cacahuate.jpg" },
-    { nombre: "M&M De Mantequilla De Cacahuate 16.10g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/m&m_peanut_butter.jpg" },
-    { nombre: "M&M De Galleta 38.3g", categorias: [".", "Dulces", "Selección completa"], precio: 15.00, imagen: "img/M&M_De_Galleta.webp" },
-    { nombre: "Reese’s 8.66g", categorias: [".", "Dulces", "Selección completa"], precio: 3.33, imagen: "img/Reese’s.jpg" },
-    { nombre: "Gansitos 50g", categorias: [".", "Dulces", "Selección completa"], precio: 17.00, imagen: "img/gansito.jpg" },
-    { nombre: "Duvalín 10g", categorias: [".", "Dulces", "Selección completa"], precio: 3.00, imagen: "img/duvalin.jpg" },
-    { nombre: "Pandita 15g", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/panditas.jpg" },
-    { nombre: "Snickers Fun Size", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/Snickers_Fun_Size.jpg" },
-    { nombre: "Milkyways Fun Size", categorias: [".", "Dulces", "Selección completa"], precio: 7.00, imagen: "img/Milkyways_Fun_Size.jpg" },
-    { nombre: "Kinder delice", categorias: [".", "Dulces", "Selección completa"], precio: 20.00, imagen: "img/delice.jpg" },
+    { nombre: "Snicker 48g", categorias: ["Dulces", "Selección completa"], precio: 17.00, imagen: "img/Snickers.jpg" },
+    { nombre: "Milkyways 48g", categorias: ["Dulces", "Selección completa"], precio: 20.00, imagen: "img/milkyway.jpg" },
+    { nombre: "Mini Twix", categorias: ["Dulces", "Selección completa"], precio: 5.00, imagen: "img/Mini_Twix.jpg" },
+    { nombre: "M&M De Chocolate 16.10g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Chocolate.jpg" },
+    { nombre: "M&M De Cacahuate 16.10g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Cacahuate.jpg" },
+    { nombre: "M&M De Mantequilla De Cacahuate 16.10g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/m&m_peanut_butter.jpg" },
+    { nombre: "M&M De Galleta 38.3g", categorias: ["Dulces", "Selección completa"], precio: 15.00, imagen: "img/M&M_De_Galleta.webp" },
+    { nombre: "Reese’s 8.66g", categorias: ["Dulces", "Selección completa"], precio: 3.33, imagen: "img/Reese’s.jpg" },
+    { nombre: "Gansitos 50g", categorias: ["Dulces", "Selección completa"], precio: 17.00, imagen: "img/gansito.jpg" },
+    { nombre: "Duvalín 10g", categorias: ["Dulces", "Selección completa"], precio: 3.00, imagen: "img/duvalin.jpg" },
+    { nombre: "Pandita 15g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/panditas.jpg" },
+    { nombre: "Snickers Fun Size", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/Snickers_Fun_Size.jpg" },
+    { nombre: "Milkyways Fun Size", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/Milkyways_Fun_Size.jpg" },
+    { nombre: "Kinder delice", categorias: ["Dulces", "Selección completa"], precio: 20.00, imagen: "img/delice.jpg" },
 
     // premium (mamadas que se me ocurrieron)
     { nombre: "Whatsapp doritos 240g", categorias: ["premium"], precio: 999999.999, imagen: "img/whatsapp.jpg" },

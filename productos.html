@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Allura&display=swap" rel="stylesheet">
     <style>
-        /* ---------- Estilos generales ---------- */
         body {
             background-color: #fffcdc;
             font-family: 'Open Sans', sans-serif;
@@ -21,7 +20,6 @@
             box-sizing: border-box;
         }
 
-        /* ---------- Encabezado fijo ---------- */
         .main-header {
             background-color: #fdfcf5;
             color: #000;
@@ -37,33 +35,49 @@
             justify-content: center;
             min-height: 80px;
         }
+.main-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-        .logo {
-            max-height: 80px;
-            position: absolute;
-            left: 48.8%;
-            top: 20%;
-            transform: translateX(-50%);
-            transition: transform 0.3s ease-in-out;
-        }
+.header-side {
+  width: 120px;
+}
 
+.logo {
+  max-height: 80px;
+  transition: transform 0.3s ease-in-out;
+  display: block;
+  margin: 0 auto;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.titulo-derecha {
+  position: static;
+  right: auto;
+  top: auto;
+  transform: none;
+  font-weight: 700;
+  font-size: 1.2em;
+  white-space: nowrap;
+  color: #333;
+  opacity: 0;
+  animation: fadeInRight 1s ease-out 0.5s forwards;
+  font-family: Allura, cursive;
+}
         .logo:hover {
             transform: translateX(-50%) scale(1.1);
         }
 
-    .titulo-derecha {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-weight: 700;
-      font-size: 1.2em;
-      white-space: nowrap;
-      color: #333;
-      opacity: 0;
-      animation: fadeInRight 1s ease-out 0.5s forwards;
-      font-family: Allura, cursive;
-    }
+
 
         /* ---------- Grid de productos ---------- */
         .productos-grid {
@@ -138,19 +152,19 @@
         }
     </style>
 </head>
-<body>
 <div class="main-header">
   <div class="main-header-inner">
-    <a href="index.html"> <img src="img/roro's_shop.png" alt="Roro's shop" class="logo"></a>
-<div class="titulo-derecha">
-  <span>Roro's</span><br>
-  <span>Shop</span><br>
-  <span>Menu</span>
-</div>
+    <div class="header-side"></div>
+    <a href="index.html">
+      <img src="img/roro's_shop.png" alt="Roro's shop" class="logo">
+    </a>
+    <div class="titulo-derecha">
+      <span>Roro's</span><br>
+      <span>Shop</span><br>
+      <span>Menu</span>
+    </div>
   </div>
 </div>
-    <div class="productos-grid" id="productos-lista"></div>
-
     <script>
 const productos = [
 

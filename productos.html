@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Allura&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- Estilos generales ---------- */
+        body {
+            background-color: #fffcdc;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 100px;
+            box-sizing: border-box;
+        }
+
+        /* ---------- Encabezado fijo ---------- */
+        .main-header {
+            background-color: #fdfcf5;
+            color: #000;
+            padding: 15px 30px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+
+        .logo {
+            max-height: 80px;
+            position: absolute;
+            left: 48.8%;
+            top: 20%;
+            transform: translateX(-50%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+    .titulo-derecha {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 700;
+      font-size: 1.2em;
+      white-space: nowrap;
+      color: #333;
+      opacity: 0;
+      animation: fadeInRight 1s ease-out 0.5s forwards;
+      font-family: Allura, cursive;
+    }
+
+        /* ---------- Grid de productos ---------- */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 80px;
+            padding: 20px;
+            width: 90%;
+            max-width: 1000px;
+            box-sizing: border-box;
+        }
+
+        /* ---------- Tarjetas de productos ---------- */
+        .producto-item {
+            background-color: #fdfcf5;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            padding: 15px;
+            text-align: center;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .producto-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .producto-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        .producto-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .producto-item p {
+            margin-bottom: 0;
+            font-size: 0.95em;
+            color: #333;
+        }
+
+        /* ---------- Animaciones ---------- */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-header">
+  <div class="main-header-inner">
+    <a href="index.html"> <img src="img/roro's_shop.png" alt="Roro's shop" class="logo"></a>
+<div class="titulo-derecha">
+  <span>Roro's</span><br>
+  <span>Shop</span><br>
+  <span>Menu</span>
+</div>
+  </div>
+</div>
+    <div class="productos-grid" id="productos-lista"></div>
+
+    <script>
+const productos = [
+
+    // Peke Pakes (Consumibles)
+    { nombre: "Emperador De Chocolate 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/emperador_chocolate.jpg" },
+    { nombre: "Emperador De Vainilla 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/emperador_vainilla.jpg" },
+    { nombre: "Chokis 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/chokis_clasicas.jpg" },
+    { nombre: "Arcoíris 36g", categorias: ["Peke Pakes", "Selección completa"], precio: 12.00, imagen: "img/arcoiris.jpg" },
+    { nombre: "Mamuts 12g", categorias: ["Peke Pakes", "Selección completa"], precio: 5.00, imagen: "img/mamuts.jpg" },
+
+    // Santa Clara (Bebidas, Consumibles)
+    { nombre: "Santa Clara Vainilla 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_vainilla.jpg" },
+    { nombre: "Santa Clara Fresa 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_fresa.jpg" },
+    { nombre: "Santa Clara Capuccino 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_capuccino.jpg" },
+    { nombre: "Santa Clara Chocolate 200ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_chocolate.jpg" },
+    { nombre: "Santa Clara Galleta 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/santa_clara_galleta.jpg" },
+    { nombre: "Santa Clara Fantasía 180ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/Santa_clara_Fantasía.jpg" },
+
+    // Jugos Del Valle (Bebidas, Consumibles)
+    { nombre: "Jugo De Mango 200ml", categorias: ["Bebidas", "Selección completa"], precio: 12.00, imagen: "img/jugo_mango.jpg" },
+    { nombre: "Jugo De Manzana 200ml", categorias: ["Bebidas", "Selección completa"], precio: 12.00, imagen: "img/Jugo_De_Manzana.jpg" },
+    { nombre: "Jugo De Durazno 200ml", categorias: ["Bebidas", "Selección completa"], precio: 12.00, imagen: "img/jugo_durazno.jpg" },
+
+    // Jugos kool aid (Bebidas, Consumibles)
+    { nombre: "Kool-Aid Jammers Mora Azul 177ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/coolaid_blue.jpg" },
+    { nombre: "Kool-Aid Jammers Cereza 177ml", categorias: ["Bebidas", "Selección completa"], precio: 15.00, imagen: "img/coolaid_red.jpg" },
+
+    // Agua Natural
+    { nombre: "Agua Natural Member’s Mark 296ml", categorias: ["Bebidas", "Selección completa"], precio: 5.00, imagen: "img/water.webp" },
+
+    // Picantes
+    { nombre: "Gomangos 8g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 3.00, imagen: "img/gomango.jpg" },
+    { nombre: "Lucas Gusano De Tamarindo 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/Lucas_Gusano_De_Tamarindo.png" },
+    { nombre: "Lucas Gusano De Chamoy 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/Lucas_Gusano_De_Chamoy.jpg" },
+    { nombre: "Lucas Gusano Acidito 36g", categorias: ["picante", "poca azúcar", "Selección completa"], precio: 12.00, imagen: "img/Lucas_Gusano_Acidito.jpg" },
+
+    // Frituras
+    { nombre: "Sabritas 18g", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/sabritas_original.jpg" },
+    { nombre: "Ruffles Originales", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/original_ruffles.jpg" },
+    { nombre: "Ruffles Con Queso 20g", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/ruffles_queso.jpg" },
+    { nombre: "Cheetos Torciditos 18g", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/torciditos.jpg" },
+    { nombre: "Cheetos Xtra Flamin’ Hot", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/flaming_hot.jpg" },
+    { nombre: "Fritos De Maíz", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/Fritos_De_Maíz.jpg" },
+    { nombre: "Doritos Nacho 23g", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/Doritos_Nacho_23g.webp" },
+    { nombre: "Doritos Cool Ranch", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/Doritos_Cool_Ranch.webp" },
+    { nombre: "Churrumais 18g", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/churrumais.jpg" },
+    { nombre: "Rancheritos", categorias: ["Frituras", "Selección completa"], precio: 15.00, imagen: "img/rancheritos.jpg" },
+
+    // Chocolates (también son Dulces y Consumibles)
+    { nombre: "Snicker 48g", categorias: ["Dulces", "Selección completa"], precio: 17.00, imagen: "img/Snickers.jpg" },
+    { nombre: "Milkyways 48g", categorias: ["Dulces", "Selección completa"], precio: 20.00, imagen: "img/milkyway.jpg" },
+    { nombre: "Mini Twix", categorias: ["Dulces", "Selección completa"], precio: 5.00, imagen: "img/Mini_Twix.jpg" },
+    { nombre: "M&M De Chocolate 16.10g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Chocolate.jpg" },
+    { nombre: "M&M De Cacahuate 16.10g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/M&M_De_Cacahuate.jpg" },
+    { nombre: "M&M De Mantequilla De Cacahuate 16.10g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/m&m_peanut_butter.jpg" },
+    { nombre: "M&M De Galleta 38.3g", categorias: ["Dulces", "Selección completa"], precio: 15.00, imagen: "img/M&M_De_Galleta.webp" },
+    { nombre: "Reese’s 8.66g", categorias: ["Dulces", "Selección completa"], precio: 3.33, imagen: "img/Reese’s.jpg" },
+    { nombre: "Gansitos 50g", categorias: ["Dulces", "Selección completa"], precio: 17.00, imagen: "img/gansito.jpg" },
+    { nombre: "Duvalín 10g", categorias: ["Dulces", "Selección completa"], precio: 3.00, imagen: "img/duvalin.jpg" },
+    { nombre: "Pandita 15g", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/panditas.jpg" },
+    { nombre: "Snickers Fun Size", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/Snickers_Fun_Size.jpg" },
+    { nombre: "Milkyways Fun Size", categorias: ["Dulces", "Selección completa"], precio: 7.00, imagen: "img/Milkyways_Fun_Size.jpg" },
+    { nombre: "Kinder delice", categorias: ["Dulces", "Selección completa"], precio: 20.00, imagen: "img/delice.jpg" },
+
+    // premium (mamadas que se me ocurrieron)
+    { nombre: "Whatsapp doritos 240g", categorias: ["premium"], precio: 999999.999, imagen: "img/whatsapp.jpg" },
+    { nombre: "Un abrazo de rodrigo", categorias: ["premium"], precio: 10.07, imagen: "img/roro's_shop.jpg" },
+
+];
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+            const results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+              function mostrarProductos(categoriaSeleccionada) {
+            const productosLista = document.getElementById("productos-lista");
+            productosLista.innerHTML = "";
+
+            const productosFiltrados = productos.filter(producto => producto.categorias.includes(categoriaSeleccionada));
+
+            if (productosFiltrados.length > 0) {
+                productosFiltrados.forEach((producto, index) => {
+                    const productoDiv = document.createElement("div");
+                    productoDiv.classList.add("producto-item");
+                    productoDiv.style.animationDelay = `${index * 0.1}s`; // Retraso escalonado
+                    productoDiv.innerHTML = `
+                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                        <h3>${producto.nombre}</h3>
+                        <p>$${producto.precio.toFixed(2)}</p>
+                    `;
+                    productosLista.appendChild(productoDiv);
+                });
+            } else {
+                productosLista.innerHTML = "<p>No hay productos en esta categoría.</p>";
+            }
+        }
+
+        const categoria = getParameterByName('categoria');
+        if (categoria) {
+            mostrarProductos(categoria);
+        }
+    </script>
+</body>
+</html>

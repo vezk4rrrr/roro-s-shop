@@ -385,7 +385,7 @@
    La presidente Claudia Sheinbaum no está relacionada con el proyecto.
   </div>
 
-  <div class="opiniones">
+ <div class="opiniones">
     <h2>¿Qué te gustaría ver en el menú?
       ¡O danos tu opinión!
     </h2>
@@ -406,40 +406,39 @@
     <p>Opiniones negativas: <span id="negativas">0</span></p>
   </div>
 
-<script>
-  document.getElementById('enviar-opinion').addEventListener('click', function() {
-    const mensaje = document.getElementById('mensaje').value.trim();
-    const experiencia = document.getElementById('experiencia').value;
+  <script>
+    document.getElementById('enviar-opinion').addEventListener('click', function() {
+      const mensaje = document.getElementById('mensaje').value.trim();
+      const experiencia = document.getElementById('experiencia').value;
 
-    if (mensaje === "") {
-      alert("Por favor, escribe una sugerencia.");
-      return;
-    }
+      if (mensaje === "") {
+        alert("Por favor, escribe una sugerencia.");
+        return;
+      }
 
-    const datos = {
-      mensaje: mensaje,
-      experiencia: experiencia
-    };
+      const datos = {
+        mensaje: mensaje,
+        experiencia: experiencia
+      };
 
-    fetch("https://script.google.com/macros/s/AKfycbw3azhCcpOmx4d5lzny3undje9zpzyEC8qQj0f8ICuqI5-OgBcMry4Q9WhJgGr8eoR0/exec", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datos)
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert("¡Gracias por tu opinión!");
-      document.getElementById('mensaje').value = "";
-      document.getElementById('experiencia').value = "positiva"; // vuelve al valor por defecto
-      console.log("Respuesta del servidor:", data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert("Hubo un error al enviar.");
+      fetch("https://script.google.com/macros/s/AKfycbw3azhCcpOmx4d5lzny3undje9zpzyEC8qQj0f8ICuqI5-OgBcMry4Q9WhJgGr8eoR0/exec", {
+        method: "POST",
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      })
+      .then(() => {
+        alert("¡Gracias por tu opinión!");
+        document.getElementById('mensaje').value = "";
+        document.getElementById('experiencia').value = "";
+         })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("Hubo un error al enviar.");
+      });
     });
-  });
-</script>
+    </script>
 </body>
 </html>

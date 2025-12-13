@@ -303,29 +303,6 @@
       transform: scale(1.05);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
-
-    /* Búsqueda en índice */
-    .search-container-index {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 95px;
-      position: relative;
-      z-index: 50;
-    }
-
-    .search-container-index input[type="search"] {
-      width: 90%;
-      max-width: 700px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 2px solid #e6d9b2;
-      background: #fff;
-      font-size: 1em;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    }
-
-    .search-results-index .producto-item img { max-width: 80px; }
   </style>
 </head>
 <body>
@@ -355,14 +332,6 @@
     <a href="login/login.html">Iniciar Sesión (coming soon)</a>
     <a href="carrito.html">Carrito (coming soon)</a>
 </nav>
-
-<!-- BARRA DE BÚSQUEDA VISIBLE -->
-<div class="search-container-index" role="search" aria-label="Buscar productos">
-  <input id="search-input-index" type="search" placeholder="Buscar productos..." aria-label="Buscar productos" autocomplete="off" />
-</div>
-
-<!-- Contenedor donde se mostrarán los resultados en el index (vista previa rápida) -->
-<main id="search-results-index" class="categorias-container search-results-index" aria-live="polite"></main>
 
 <main class="categorias-container" role="main">
     <a href="productos.html?categoria=Bebidas" class="categoria" aria-label="Ver categoría Bebidas">
@@ -410,23 +379,6 @@
     }, { threshold: 0.2 });
 
     categorias.forEach(categoria => observer.observe(categoria));
-  </script>
-
-  <script src="js/search.js"></script>
-  <script>
-    // Inicializar búsqueda en index: mostrar resultados a medida que escribe
-    const inputIndex = document.getElementById('search-input-index');
-    const resultsIndex = document.getElementById('search-results-index');
-
-    // Usamos el init general, pero evitamos mostrar TODO el catálogo cuando el input está vacío
-    SearchModule.initSearch({ inputSelector: '#search-input-index', resultsSelector: '#search-results-index', emptyText: 'No se encontraron productos' });
-
-    inputIndex.addEventListener('input', () => {
-      const q = inputIndex.value.trim();
-      if (!q) {
-        resultsIndex.innerHTML = '';
-      }
-    });
   </script>
 
  <div class="creditos-inferior-derecha">

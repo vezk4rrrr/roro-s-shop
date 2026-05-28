@@ -1,5 +1,3 @@
-// search.js
-// Módulo compartido para la lista de productos y funcionalidad de búsqueda
 (function (global) {
   'use strict';
 
@@ -105,7 +103,6 @@
 
     input.addEventListener('input', onInput);
 
-    // Inicializar con query si existe en URL (productos.html puede usar ?q=...)
     const params = new URLSearchParams(location.search);
     const qParam = params.get('q');
     if (qParam) {
